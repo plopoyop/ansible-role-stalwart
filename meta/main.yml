@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  namespace: plopoyop
+  role_name: stalwart
+  description: Install & configure stalwart email server
+  author: Clément Hubert
+
+  issue_tracker_url: "https://github.com/plopoyop/ansible-role-stalwart/issues"
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - stalwart
+    - mail
+    - server
+    - smtp
+    - mta
+    - caldav
+    - imap
+    - webdav
+    - pop3
+    - carddav
+    - jmap
+
+dependencies: []
