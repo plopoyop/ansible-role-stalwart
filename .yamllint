@@ -3,6 +3,7 @@ extends: default
 
 ignore:
   - "galaxy.yml"
+  - ".github"
 
 rules:
   line-length:
