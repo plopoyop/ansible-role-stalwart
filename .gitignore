@@ -6,3 +6,5 @@ devenv.local.nix
 .direnv
 
 .ansible/
+
+.task
