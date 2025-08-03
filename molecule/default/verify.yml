@@ -1,0 +1,59 @@
+---
+- name: Verify
+  hosts: all
+  tasks:
+    - name: "Check group has been created"
+      ansible.builtin.group:
+        name: "stalwartg"
+        state: "present"
+      check_mode: true
+      register: "stalwart_group_check"
+
+    - name: "Check user has been created"
+      ansible.builtin.user:
+        name: "stalwartu"
+        group: "stalwartg"
+        create_home: false
+        system: true
+      check_mode: true
+      register: "stalwart_user_check"
+
+    - name: "Verify stalwart service is running"
+      ansible.builtin.service:
+        name: "stalwart"
+        state: "started"
+        enabled: true
+      failed_when: false
+      check_mode: true
+      register: "stalwart_service"
+
+    - name: "Check install"
+      ansible.builtin.stat:
+        path: "/opt/stalwart/bin/stalwart"
+      register: "st_bin"
+
+    - name: "Check config file"
+      ansible.builtin.stat:
+        path: "/opt/stalwart/etc/config.toml"
+      register: "st_config"
+
+    - name: "Gather facts on listening ports"
+      community.general.listen_ports_facts:
+
+    - name: "Assert conditions"
+      ansible.builtin.assert:
+        that:
+          - not stalwart_group_check.changed
+          - not stalwart_user_check.changed
+          - not stalwart_service.changed
+          - st_bin.stat.mode == "0750"
+          - st_config.stat.mode == "0640"
+          - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 25) | length ) > 0
+          - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 587) | length ) > 0
+          - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 465) | length ) > 0
+          - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 993) | length ) > 0
+          - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 143) | length ) == 0
+          - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 110) | length ) == 0
+          - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 4190) | length ) == 0
+        success_msg: "All assertions passed!"
+        fail_msg: "Some assertions failed!"
