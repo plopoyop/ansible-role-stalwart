@@ -1,0 +1,10 @@
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+.ansible/
+
+.task
