@@ -1,2 +1,10 @@
 ---
-# handlers file for plopoyop.stalwart
+- name: "Restart Stalwart"
+  ansible.builtin.service:
+    name: "{{ stalwart_service_name }}"
+    state: "restarted"
+  when: stalwart_service_state == "started" and stalwart_service_enabled
+
+- name: "Reload Systemd"
+  ansible.builtin.systemd_service:
+    daemon_reload: true

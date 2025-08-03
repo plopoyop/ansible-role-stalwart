@@ -1,0 +1,58 @@
+---
+- name: "Create Stalwart group"
+  ansible.builtin.group:
+    name: "{{ stalwart_system_group }}"
+    system: true
+
+- name: "Create Stalwart user"
+  ansible.builtin.user:
+    name: "{{ stalwart_system_user }}"
+    group: "{{ stalwart_system_group }}"
+    create_home: false
+    shell: "/usr/sbin/nologin"
+    system: true
+
+- name: "Check if already installed"
+  ansible.builtin.stat:
+    path: "{{ stalwart_executable_path }}"
+  register: stalwart_exec
+
+- name: "Get version if stalwart is installed"
+  when: stalwart_exec.stat.exists
+  block:
+    - name: "Get version"
+      ansible.builtin.command: "{{ stalwart_executable_path }} -V"
+      failed_when: false
+      changed_when: false
+      check_mode: false
+      register: stalwart_output
+
+    - name: "Set current installed version"
+      ansible.builtin.set_fact:
+        stalwart_current_version: "{{ stalwart_output.stdout_lines[0] }}"
+
+- name: "Check if initialization has been made"
+  ansible.builtin.stat:
+    path: "{{ stalwart_config_file_path }}"
+  register: stalwart_config_file_st
+
+- name: "Handle admin password when setup has been made"
+  when: stalwart_config_file_st.stat.exists
+  block:
+    - name: "Get config file content"
+      ansible.builtin.slurp:
+        src: "{{ stalwart_config_file_path }}"
+      register: config_file_content
+
+    - name: "Get existing password hash"
+      ansible.builtin.set_fact:
+        hash_stored: "{{ config_file_content['content'] | b64decode | regex_search('\nsecret = \"(.*)\"\n', '\\1') }}"
+
+    - name: "Get existing salt"
+      ansible.builtin.set_fact:
+        stalwart_fallback_admin_password_salt: "{{ (hash_stored[0] | split('$'))[2] }}"
+
+- name: "Create salt if does not exists"
+  ansible.builtin.set_fact:
+    stalwart_fallback_admin_password_salt: "{{ lookup('password', '/dev/null length=16 chars=ascii_letters,digits') }}"
+  when: stalwart_fallback_admin_password_salt is undefined

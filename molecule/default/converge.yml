@@ -1,0 +1,53 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: true
+  vars:
+    stalwart_server_hostname: "instance.local"
+    stalwart_system_user: "stalwartu"
+    stalwart_system_group: "stalwartg"
+    stalwart_server_listeners:
+      - name: "smtp"
+        bind: "[::]:25"
+        protocol: "smtp"
+      - name: "submission"
+        bind: "[::]:587"
+        protocol: "smtp"
+      - name: "submissions"
+        bind: "[::]:465"
+        protocol: "smtp"
+        options:
+          tls.implicit: true
+      - name: "imaptls"
+        bind: "[::]:993"
+        protocol: "imap"
+        options:
+          tls.implicit: true
+      - name: "pop3s"
+        bind: "[::]:995"
+        protocol: "pop3"
+        options:
+          tls.implicit: true
+      - name: "https"
+        protocol: "http"
+        bind: "[::]:443"
+        options:
+          tls.implicit: true
+      - name: "http"
+        protocol: "http"
+        bind: "[::]:8080"
+
+    stalwart_additionnal_configs:
+      - name: "directory.imap.pool"
+        options:
+          max-connections: 10
+      - name: "directory.imap.pool.timeout"
+        options:
+          create: "30s"
+          wait: "30s"
+          recycle: "30s"
+
+  tasks:
+    - name: "Import role"
+      ansible.builtin.import_role:
+        name: "plopoyop.stalwart"

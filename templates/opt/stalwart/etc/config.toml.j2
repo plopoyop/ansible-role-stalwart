@@ -1,0 +1,92 @@
+[server]
+hostname = "{{ stalwart_server_hostname }}"
+max-connections = "{{ stalwart_server_max_connections }}"
+
+{% for listener in stalwart_server_listeners %}
+[server.listener.{{ listener.name }}]
+bind = "{{ listener.bind }}"
+protocol = "{{ listener.protocol }}"
+{% for option_name, option_value in (listener.options | default({})).items() %}
+{{ option_name }} =
+{%- if option_value is string %}
+ "{{ option_value }}"
+{% elif option_value is boolean %}
+ {{ option_value | lower }}
+{% else %}
+ {{ option_value }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
+[storage]
+data = "{{ stalwart_storage_data }}"
+fts = "{{ stalwart_storage_fts }}"
+blob = "{{ stalwart_storage_blob }}"
+lookup = "{{ stalwart_storage_lookup }}"
+directory = "{{ stalwart_directory_type }}"
+
+{% for store in stalwart_stores %}
+[store.{{ store.name }}]
+type = "{{ store.type }}"
+{% for option_name, option_value in (store.options | default({})).items() %}
+{{ option_name }} =
+{%- if option_value is string %}
+ "{{ option_value }}"
+{% elif value is boolean %}
+ {{ option_value | lower }}
+{% else %}
+ {{ option_value }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
+[directory.{{ stalwart_directory_type }}]
+type = "{{ stalwart_directory_type }}"
+{% for option_name, option_value in stalwart_directory_options.items() %}
+{{ option_name }} =
+{%- if option_value is string %}
+ "{{ option_value }}"
+{% elif option_value is boolean %}
+ {{ option_value | lower }}
+{% else %}
+ {{ option_value }}
+{% endif %}
+{% endfor %}
+
+{% for tracer in stalwart_tracers %}
+[tracer.{{ tracer.type }}]
+type = "{{ tracer.type }}"
+{% for option_name, option_value in (tracer.options | default({})).items() %}
+{{ option_name }} =
+{%- if option_value is string %}
+ "{{ option_value }}"
+{% elif option_value is boolean %}
+ {{ option_value | lower }}
+{% else %}
+ {{ option_value }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+
+[authentication.fallback-admin]
+user = "{{ stalwart_fallback_admin_login }}"
+secret = "{{ stalwart_fallback_admin_password | ansible.builtin.password_hash(salt=stalwart_fallback_admin_password_salt, rounds=5000) }}"
+
+
+{% for config in stalwart_additionnal_configs | default([]) %}
+[{{ config.name }}]
+{% for option_name, option_value in (config.options | default({})).items() %}
+{{ option_name }} =
+{%- if option_value is string %}
+ "{{ option_value }}"
+{% elif value is boolean %}
+ {{ option_value | lower }}
+{% else %}
+ {{ option_value }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}

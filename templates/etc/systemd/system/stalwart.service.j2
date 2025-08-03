@@ -1,0 +1,21 @@
+[Unit]
+Description=Stalwart
+Conflicts=postfix.service sendmail.service exim4.service
+ConditionPathExists={{ stalwart_config_path }}/config.toml
+After=network-online.target
+
+[Service]
+Type=simple
+LimitNOFILE=65536
+KillMode=process
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5
+ExecStart={{ stalwart_executable_path }} --config={{ stalwart_config_path }}/config.toml
+SyslogIdentifier=stalwart
+User={{ stalwart_system_user }}
+Group={{ stalwart_system_group }}
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

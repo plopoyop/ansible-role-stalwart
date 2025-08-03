@@ -1,2 +1,9 @@
 ---
-# tasks file for plopoyop.stalwart
+- name: "Import prepare tasks"
+  ansible.builtin.import_tasks: "prepare.yml"
+
+- name: "Import install tasks"
+  ansible.builtin.import_tasks: "install.yml"
+
+- name: "Import configure tasks"
+  ansible.builtin.import_tasks: "configure.yml"

@@ -1,2 +1,13 @@
 ---
-# vars file for plopoyop.stalwart
+stalwart_download_url: "https://github.com/stalwartlabs/stalwart/releases/download/v{{ stalwart_version }}/{{ stalwart_component }}-{{ ansible_architecture }}-unknown-linux-gnu.tar.gz"
+
+stalwart_install_path: "/opt/stalwart"
+stalwart_executable_path: "{{ stalwart_bin_path }}/stalwart"
+stalwart_data_path: "{{ stalwart_install_path }}/data"
+stalwart_bin_path: "{{ stalwart_install_path }}/bin"
+stalwart_config_path: "{{ stalwart_install_path }}/etc"
+stalwart_logs_path: "{{ stalwart_install_path }}/logs"
+stalwart_config_file_path: "{{ stalwart_config_path }}/config.toml"
+
+stalwart_service_name: "stalwart"
+stalwart_service_file_path: "/etc/systemd/system/{{ stalwart_service_name }}.service"
