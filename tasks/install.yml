@@ -1,0 +1,40 @@
+---
+- name: "Ensure installation path exists"
+  ansible.builtin.file:
+    path: "{{ directory_to_create }}"
+    state: "directory"
+    owner: "{{ stalwart_system_user }}"
+    group: "{{ stalwart_system_group }}"
+    mode: "0750"
+  loop:
+    - "{{ stalwart_install_path }}"
+    - "{{ stalwart_bin_path }}"
+    - "{{ stalwart_config_path }}"
+    - "{{ stalwart_logs_path }}"
+    - "{{ stalwart_data_path }}"
+  loop_control:
+    loop_var: "directory_to_create"
+
+- name: "Download Stalwart"
+  ansible.builtin.unarchive:
+    src: "{{ stalwart_download_url }}"
+    dest: "{{ stalwart_bin_path }}"
+    owner: "{{ stalwart_system_user }}"
+    group: "{{ stalwart_system_group }}"
+    mode: "0750"
+    extra_opts: ["--show-stored-name"]
+    remote_src: true
+  ignore_errors: "{{ ansible_check_mode }}"
+  notify: "Restart Stalwart"
+  when: ( not stalwart_exec.stat.exists ) or ( stalwart_current_version != stalwart_version)
+
+- name: "Create service file"
+  ansible.builtin.template:
+    src: "etc/systemd/system/stalwart.service.j2"
+    dest: "{{ stalwart_service_file_path }}"
+    owner: "{{ stalwart_system_user }}"
+    group: "{{ stalwart_system_group }}"
+    mode: "0640"
+  notify:
+    - "Reload Systemd"
+    - "Restart Stalwart"
