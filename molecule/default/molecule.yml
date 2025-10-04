@@ -3,7 +3,7 @@ driver:
   name: podman
 platforms:
   - name: "instance"
-    image: "docker.io/geerlingguy/docker-${MOLECULE_DISTRO:-debian12}-ansible:latest"
+    image: "docker.io/geerlingguy/docker-${MOLECULE_DISTRO:-debian13}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     cgroupns_mode: host
     volumes:
