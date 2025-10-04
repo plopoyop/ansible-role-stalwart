@@ -33,7 +33,7 @@ type = "{{ store.type }}"
 {{ option_name }} =
 {%- if option_value is string %}
  "{{ option_value }}"
-{% elif value is boolean %}
+{% elif option_value is boolean %}
  {{ option_value | lower }}
 {% else %}
  {{ option_value }}
