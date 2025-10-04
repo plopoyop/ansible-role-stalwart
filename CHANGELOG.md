@@ -6,6 +6,7 @@
 
 ## 🐛 Bug Fixes
 
+- fix temp dir during init [\#9](https://github.com/plopoyop/ansible-role-stalwart/pull/9) ([plopoyop](https://github.com/plopoyop))
 - fix typo in config template [\#8](https://github.com/plopoyop/ansible-role-stalwart/pull/8) ([plopoyop](https://github.com/plopoyop))
 - fix admin password retrieval regex [\#7](https://github.com/plopoyop/ansible-role-stalwart/pull/7) ([plopoyop](https://github.com/plopoyop))
 
@@ -15,6 +16,7 @@
 
 **Closed issues:**
 
+- Unable to create temp dir on Init [\#6](https://github.com/plopoyop/ansible-role-stalwart/issues/6)
 - Invalid admin password detection [\#5](https://github.com/plopoyop/ansible-role-stalwart/issues/5)
 - Error in config template [\#4](https://github.com/plopoyop/ansible-role-stalwart/issues/4)
 
