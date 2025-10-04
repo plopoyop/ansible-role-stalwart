@@ -7,6 +7,7 @@
 ## 🐛 Bug Fixes
 
 - fix typo in config template [\#8](https://github.com/plopoyop/ansible-role-stalwart/pull/8) ([plopoyop](https://github.com/plopoyop))
+- fix admin password retrieval regex [\#7](https://github.com/plopoyop/ansible-role-stalwart/pull/7) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
@@ -14,6 +15,7 @@
 
 **Closed issues:**
 
+- Invalid admin password detection [\#5](https://github.com/plopoyop/ansible-role-stalwart/issues/5)
 - Error in config template [\#4](https://github.com/plopoyop/ansible-role-stalwart/issues/4)
 
 ## [1.0.0](https://github.com/plopoyop/ansible-role-stalwart/tree/1.0.0) (2025-08-03)
