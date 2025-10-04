@@ -2,6 +2,6 @@
 ---
 inputs:
   nixpkgs:
-    url: github:cachix/devenv-nixpkgs/rolling
+    url: github:NixOS/nixpkgs/nixos-25.05
 
 allowUnfree: true
