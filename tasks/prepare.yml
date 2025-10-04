@@ -9,6 +9,7 @@
     name: "{{ stalwart_system_user }}"
     group: "{{ stalwart_system_group }}"
     create_home: false
+    home: "{{ stalwart_install_path }}"
     shell: "/usr/sbin/nologin"
     system: true
 
