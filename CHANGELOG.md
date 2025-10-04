@@ -4,9 +4,17 @@
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/1.0.0...1.1.0)
 
+## 🐛 Bug Fixes
+
+- fix typo in config template [\#8](https://github.com/plopoyop/ansible-role-stalwart/pull/8) ([plopoyop](https://github.com/plopoyop))
+
 ## ⚙️ Dependencies
 
 - Upgrade devenv [\#3](https://github.com/plopoyop/ansible-role-stalwart/pull/3) ([plopoyop](https://github.com/plopoyop))
+
+**Closed issues:**
+
+- Error in config template [\#4](https://github.com/plopoyop/ansible-role-stalwart/issues/4)
 
 ## [1.0.0](https://github.com/plopoyop/ansible-role-stalwart/tree/1.0.0) (2025-08-03)
 
