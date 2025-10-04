@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/plopoyop/ansible-role-stalwart/tree/1.1.0) (2025-10-04)
+
+[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/1.0.0...1.1.0)
+
+## ⚙️ Dependencies
+
+- Upgrade devenv [\#3](https://github.com/plopoyop/ansible-role-stalwart/pull/3) ([plopoyop](https://github.com/plopoyop))
+
 ## [1.0.0](https://github.com/plopoyop/ansible-role-stalwart/tree/1.0.0) (2025-08-03)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/618880a00c73f05fd1f6a8aed4cb2b8954ed7aff...1.0.0)
