@@ -9,6 +9,7 @@
     name: "{{ stalwart_system_user }}"
     group: "{{ stalwart_system_group }}"
     create_home: false
+    home: "{{ stalwart_install_path }}"
     shell: "/usr/sbin/nologin"
     system: true
 
@@ -46,7 +47,7 @@
 
     - name: "Get existing password hash"
       ansible.builtin.set_fact:
-        hash_stored: "{{ config_file_content['content'] | b64decode | regex_search('\nsecret = \"(.*)\"\n', '\\1') }}"
+        hash_stored: "{{ config_file_content['content'] | b64decode | regex_search('(\\n|^)(secret|authentication\\.fallback-admin\\.secret) = \"(.*)\"\n', '\\3') }}"
 
     - name: "Get existing salt"
       ansible.builtin.set_fact:
