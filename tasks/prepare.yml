@@ -46,7 +46,7 @@
 
     - name: "Get existing password hash"
       ansible.builtin.set_fact:
-        hash_stored: "{{ config_file_content['content'] | b64decode | regex_search('\nsecret = \"(.*)\"\n', '\\1') }}"
+        hash_stored: "{{ config_file_content['content'] | b64decode | regex_search('(\\n|^)(secret|authentication\\.fallback-admin\\.secret) = \"(.*)\"\n', '\\3') }}"
 
     - name: "Get existing salt"
       ansible.builtin.set_fact:
