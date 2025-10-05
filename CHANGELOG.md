@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/plopoyop/ansible-role-stalwart/tree/1.2.0) (2025-10-05)
+
+[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/1.1.0...1.2.0)
+
+## 🚀 New Features
+
+- Introduce renovate [\#10](https://github.com/plopoyop/ansible-role-stalwart/pull/10) ([plopoyop](https://github.com/plopoyop))
+
 ## [1.1.0](https://github.com/plopoyop/ansible-role-stalwart/tree/1.1.0) (2025-10-04)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/1.0.0...1.1.0)
