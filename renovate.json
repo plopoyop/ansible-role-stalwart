@@ -10,9 +10,6 @@
       ],
       "matchPackageNames": [
         "stalwartlabs/stalwart"
-      ],
-      "registryUrl": [
-        "https://github.com/"
       ]
     }
   ],
