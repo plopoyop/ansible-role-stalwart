@@ -8,6 +8,10 @@
 
 - Introduce renovate [\#10](https://github.com/plopoyop/ansible-role-stalwart/pull/10) ([plopoyop](https://github.com/plopoyop))
 
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v43.0.2 → v43.0.14\) [\#12](https://github.com/plopoyop/ansible-role-stalwart/pull/12) ([plopoyop](https://github.com/plopoyop))
+
 ## [1.1.0](https://github.com/plopoyop/ansible-role-stalwart/tree/1.1.0) (2025-10-04)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/1.0.0...1.1.0)
