@@ -1,8 +1,8 @@
 # Changelog
 
-## [1.2.0](https://github.com/plopoyop/ansible-role-stalwart/tree/1.2.0) (2025-10-05)
+## [2.0.0](https://github.com/plopoyop/ansible-role-stalwart/tree/2.0.0) (2025-10-05)
 
-[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/1.1.0...1.2.0)
+[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/1.1.0...2.0.0)
 
 ## 🚀 New Features
 
@@ -10,6 +10,7 @@
 
 ## ⚙️ Dependencies
 
+- feat\(ci\)!: Update actions/checkout action \(v4 → v5\) [\#15](https://github.com/plopoyop/ansible-role-stalwart/pull/15) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v25.6.1 → v25.9.1\) [\#14](https://github.com/plopoyop/ansible-role-stalwart/pull/14) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v43.0.2 → v43.0.14\) [\#12](https://github.com/plopoyop/ansible-role-stalwart/pull/12) ([plopoyop](https://github.com/plopoyop))
 
