@@ -10,6 +10,7 @@
 
 ## ⚙️ Dependencies
 
+- feat\(deps\)!: Update pre-commit hook pre-commit/pre-commit-hooks \(v5.0.0 → v6.0.0\) [\#17](https://github.com/plopoyop/ansible-role-stalwart/pull/17) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update hugo19941994/delete-draft-releases action \(v1.0.1 → v2.0.0\) [\#16](https://github.com/plopoyop/ansible-role-stalwart/pull/16) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update actions/checkout action \(v4 → v5\) [\#15](https://github.com/plopoyop/ansible-role-stalwart/pull/15) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v25.6.1 → v25.9.1\) [\#14](https://github.com/plopoyop/ansible-role-stalwart/pull/14) ([plopoyop](https://github.com/plopoyop))
