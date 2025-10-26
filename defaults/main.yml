@@ -21,7 +21,7 @@ stalwart_component: "stalwart" # stalwart-foundationdb
 # @var stalwart_version:type: string
 # @var stalwart_version:description: >
 # Stalwart version to install
-stalwart_version: 0.13.4
+stalwart_version: 0.14.0
 
 # @var stalwart_service_state
 # @var stalwart_service_state:type: string
