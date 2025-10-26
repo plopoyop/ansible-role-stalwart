@@ -335,7 +335,7 @@ Stalwart version to install
 #### Default value
 
 ```YAML
-stalwart_version: 0.13.4
+stalwart_version: 0.14.0
 ```
 
 ## Dependencies
