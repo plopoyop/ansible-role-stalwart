@@ -10,7 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: 'Release on galaxy'
         uses: ansible-actions/ansible-galaxy-action@v1.2.0
