@@ -6,6 +6,7 @@
 
 ## ⚙️ Dependencies
 
+- feat\(ci\): update renovatebot/github-action action \(v44.0.5 → v44.1.0\) [\#33](https://github.com/plopoyop/ansible-role-stalwart/pull/33) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update pre-commit hook ansible/ansible-lint \(v25.12.0 → v25.12.1\) [\#32](https://github.com/plopoyop/ansible-role-stalwart/pull/32) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v25.11.1 → v25.12.0\) [\#31](https://github.com/plopoyop/ansible-role-stalwart/pull/31) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v44.0.4 → v44.0.5\) [\#30](https://github.com/plopoyop/ansible-role-stalwart/pull/30) ([plopoyop](https://github.com/plopoyop))
