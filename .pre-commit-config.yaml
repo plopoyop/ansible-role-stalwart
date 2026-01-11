@@ -21,7 +21,7 @@ repos:
         verbose: false
 
   - repo: https://github.com/ansible/ansible-lint.git
-    rev: v25.12.2
+    rev: v26.1.0
     hooks:
       - id: ansible-lint
         files: \.(yaml|yml)$
