@@ -1,11 +1,12 @@
 # Changelog
 
-## [3.0.1](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.1) (2026-02-01)
+## [3.0.1](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.1) (2026-02-12)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.0...3.0.1)
 
 ## ⚙️ Dependencies
 
+- feat\(ci\)!: Update renovatebot/github-action action \(v44.2.6 → v46.0.0\) [\#45](https://github.com/plopoyop/ansible-role-stalwart/pull/45) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v44.2.5 → v44.2.6\) [\#44](https://github.com/plopoyop/ansible-role-stalwart/pull/44) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v44.2.4 → v44.2.5\) [\#42](https://github.com/plopoyop/ansible-role-stalwart/pull/42) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v44.2.3 → v44.2.4\) [\#39](https://github.com/plopoyop/ansible-role-stalwart/pull/39) ([plopoyop](https://github.com/plopoyop))
