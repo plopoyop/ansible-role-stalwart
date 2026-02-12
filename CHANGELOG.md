@@ -8,6 +8,7 @@
 
 - feat\(ci\)!: Update renovatebot/github-action action \(v44.2.6 → v46.0.0\) [\#45](https://github.com/plopoyop/ansible-role-stalwart/pull/45) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v44.2.5 → v44.2.6\) [\#44](https://github.com/plopoyop/ansible-role-stalwart/pull/44) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update stalwartlabs/stalwart \(v0.15.3 → v0.15.4\) [\#43](https://github.com/plopoyop/ansible-role-stalwart/pull/43) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v44.2.4 → v44.2.5\) [\#42](https://github.com/plopoyop/ansible-role-stalwart/pull/42) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook adrienverge/yamllint \(v1.37.1 → v1.38.0\) [\#41](https://github.com/plopoyop/ansible-role-stalwart/pull/41) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update pre-commit hook ansible/ansible-lint \(v26.1.0 → v26.1.1\) [\#40](https://github.com/plopoyop/ansible-role-stalwart/pull/40) ([plopoyop](https://github.com/plopoyop))
