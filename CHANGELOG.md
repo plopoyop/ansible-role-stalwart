@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.0.2](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.2) (2026-02-15)
+
+[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.1...3.0.2)
+
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v46.0.0 → v46.0.2\) [\#46](https://github.com/plopoyop/ansible-role-stalwart/pull/46) ([plopoyop](https://github.com/plopoyop))
+
 ## [3.0.1](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.1) (2026-02-12)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.0...3.0.1)
