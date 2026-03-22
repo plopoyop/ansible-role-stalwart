@@ -6,6 +6,7 @@
 
 ## ⚙️ Dependencies
 
+- feat\(ci\)!: Update cachix/cachix-action action \(v16 → v17\) [\#55](https://github.com/plopoyop/ansible-role-stalwart/pull/55) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.4 → v46.1.5\) [\#54](https://github.com/plopoyop/ansible-role-stalwart/pull/54) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.2.0 → v26.3.0\) [\#53](https://github.com/plopoyop/ansible-role-stalwart/pull/53) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.3 → v46.1.4\) [\#52](https://github.com/plopoyop/ansible-role-stalwart/pull/52) ([plopoyop](https://github.com/plopoyop))
