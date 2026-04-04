@@ -167,12 +167,12 @@ stalwart_tracers:
       ansi: false
       enable: true
 
-# @var stalwart_additionnal_configs
-# @var stalwart_additionnal_configs:type: list
-# @var stalwart_additionnal_configs:description: >
-# Stalwart additionnal configuration
-# @var stalwart_additionnal_configs:example: >
-# stalwart_additionnal_configs:
+# @var stalwart_additional_configs
+# @var stalwart_additional_configs:type: list
+# @var stalwart_additional_configs:description: >
+# Stalwart additional configuration
+# @var stalwart_additional_configs:example: >
+# stalwart_additional_configs:
 #   - name: "directory.imap.pool"
 #     options:
 #       max-connections: 10
@@ -181,4 +181,4 @@ stalwart_tracers:
 #       create: "30s"
 #       wait: "30s"
 #       recycle: "30s"
-stalwart_additionnal_configs: []
+stalwart_additional_configs: "{{ stalwart_additionnal_configs | default([]) }}"

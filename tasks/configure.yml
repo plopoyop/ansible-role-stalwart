@@ -6,6 +6,13 @@
   become: true
   become_user: "{{ stalwart_system_user }}"
 
+- name: "Warn about deprecated additional config variable"
+  ansible.builtin.debug:
+    msg: >-
+      'stalwart_additionnal_configs' is deprecated and will be removed in a future release.
+      Use 'stalwart_additional_configs' instead.
+  when: stalwart_additionnal_configs is defined
+
 - name: "Setup configuration"
   ansible.builtin.template:
     src: "opt/stalwart/etc/config.toml.j2"

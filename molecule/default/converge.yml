@@ -37,7 +37,7 @@
         protocol: "http"
         bind: "[::]:8080"
 
-    stalwart_additionnal_configs:
+    stalwart_additional_configs:
       - name: "directory.imap.pool"
         options:
           max-connections: 10
