@@ -4,8 +4,13 @@
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.2...3.0.3)
 
+## 🐛 Bug Fixes
+
+- Fix `stalwart_additional_configs` config name typo in backwards-compatible fashion [\#58](https://github.com/plopoyop/ansible-role-stalwart/pull/58) ([neugepower](https://github.com/neugepower))
+
 ## ⚙️ Dependencies
 
+- feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.3.0 → v26.4.0\) [\#60](https://github.com/plopoyop/ansible-role-stalwart/pull/60) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.6 → v46.1.7\) [\#59](https://github.com/plopoyop/ansible-role-stalwart/pull/59) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update hugo19941994/delete-draft-releases action \(v2.0.0 → v3.0.0\) [\#57](https://github.com/plopoyop/ansible-role-stalwart/pull/57) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.5 → v46.1.6\) [\#56](https://github.com/plopoyop/ansible-role-stalwart/pull/56) ([plopoyop](https://github.com/plopoyop))
@@ -16,10 +21,6 @@
 - fix\(ci\): update renovatebot/github-action action \(v46.1.2 → v46.1.3\) [\#51](https://github.com/plopoyop/ansible-role-stalwart/pull/51) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.1.1 → v26.2.0\) [\#50](https://github.com/plopoyop/ansible-role-stalwart/pull/50) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.1 → v46.1.2\) [\#49](https://github.com/plopoyop/ansible-role-stalwart/pull/49) ([plopoyop](https://github.com/plopoyop))
-
-**Merged pull requests:**
-
-- Fix `stalwart_additional_configs` config name typo in backwards-compatible fashion [\#58](https://github.com/plopoyop/ansible-role-stalwart/pull/58) ([neugepower](https://github.com/neugepower))
 
 ## [3.0.2](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.2) (2026-02-22)
 
