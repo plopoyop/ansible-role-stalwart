@@ -6,7 +6,7 @@ Install & configure stalwart email server
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
-  - [stalwart_additionnal_configs](#stalwart_additionnal_configs)
+  - [stalwart_additional_configs](#stalwart_additional_configs)
   - [stalwart_component](#stalwart_component)
   - [stalwart_directory_options](#stalwart_directory_options)
   - [stalwart_directory_type](#stalwart_directory_type)
@@ -38,22 +38,25 @@ Install & configure stalwart email server
 
 ## Default Variables
 
-### stalwart_additionnal_configs
+### stalwart_additional_configs
 
-Stalwart additionnal configuration
+Stalwart additional configuration
+
+`stalwart_additionnal_configs` is deprecated. The role still accepts it for compatibility,
+but new configurations should use `stalwart_additional_configs`.
 
 **_Type:_** list<br />
 
 #### Default value
 
 ```YAML
-stalwart_additionnal_configs: []
+stalwart_additional_configs: []
 ```
 
 #### Example usage
 
 ```YAML
-stalwart_additionnal_configs:
+stalwart_additional_configs:
   - name: "directory.imap.pool"
     options:
       max-connections: 10

@@ -76,13 +76,13 @@ user = "{{ stalwart_fallback_admin_login }}"
 secret = "{{ stalwart_fallback_admin_password | ansible.builtin.password_hash(salt=stalwart_fallback_admin_password_salt, rounds=5000) }}"
 
 
-{% for config in stalwart_additionnal_configs | default([]) %}
+{% for config in stalwart_additional_configs | default([]) %}
 [{{ config.name }}]
 {% for option_name, option_value in (config.options | default({})).items() %}
 {{ option_name }} =
 {%- if option_value is string %}
  "{{ option_value }}"
-{% elif value is boolean %}
+{% elif option_value is boolean %}
  {{ option_value | lower }}
 {% else %}
  {{ option_value }}

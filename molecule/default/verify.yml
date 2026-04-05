@@ -37,6 +37,17 @@
         path: "/opt/stalwart/etc/config.toml"
       register: "st_config"
 
+    - name: "Define deprecated additional config variable"
+      ansible.builtin.set_fact:
+        stalwart_additionnal_configs:
+          - name: "legacy.compat"
+            options:
+              max-connections: 42
+
+    - name: "Load role defaults"
+      ansible.builtin.include_vars:
+        file: "{{ playbook_dir }}/../../defaults/main.yml"
+
     - name: "Gather facts on listening ports"
       community.general.listen_ports_facts:
 
@@ -55,5 +66,6 @@
           - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 143) | length ) == 0
           - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 110) | length ) == 0
           - (ansible_facts.tcp_listen | selectattr('port', 'equalto', 4190) | length ) == 0
+          - stalwart_additional_configs == stalwart_additionnal_configs
         success_msg: "All assertions passed!"
         fail_msg: "Some assertions failed!"
