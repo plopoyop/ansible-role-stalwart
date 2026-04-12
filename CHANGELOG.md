@@ -1,12 +1,20 @@
 # Changelog
 
+## [3.0.4](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.4) (2026-04-12)
+
+[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.3...3.0.4)
+
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v46.1.7 → v46.1.8\) [\#61](https://github.com/plopoyop/ansible-role-stalwart/pull/61) ([plopoyop](https://github.com/plopoyop))
+
 ## [3.0.3](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.3) (2026-04-05)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.2...3.0.3)
 
 ## 🐛 Bug Fixes
 
-- Fix `stalwart_additional_configs` config name typo in backwards-compatible fashion [\#58](https://github.com/plopoyop/ansible-role-stalwart/pull/58) ([neugepower](https://github.com/neugepower))
+- Fix `stalwart_additional_configs` config name typo in backwards-compatible fashion [\#58](https://github.com/plopoyop/ansible-role-stalwart/pull/58) ([chrizpower](https://github.com/chrizpower))
 
 ## ⚙️ Dependencies
 
