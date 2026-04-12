@@ -63,7 +63,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Create Release draft
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: ${{ steps.version.outputs.next-version }}
           tag_name: ${{ steps.version.outputs.next-version }}
