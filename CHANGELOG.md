@@ -1,11 +1,12 @@
 # Changelog
 
-## [3.0.4](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.4) (2026-07-05)
+## [3.0.4](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.4) (2026-07-12)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.3...3.0.4)
 
 ## ⚙️ Dependencies
 
+- fix\(ci\): update renovatebot/github-action action \(v46.1.17 → v46.1.18\) [\#74](https://github.com/plopoyop/ansible-role-stalwart/pull/74) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.16 → v46.1.17\) [\#72](https://github.com/plopoyop/ansible-role-stalwart/pull/72) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.15 → v46.1.16\) [\#71](https://github.com/plopoyop/ansible-role-stalwart/pull/71) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.14 → v46.1.15\) [\#69](https://github.com/plopoyop/ansible-role-stalwart/pull/69) ([plopoyop](https://github.com/plopoyop))
@@ -98,6 +99,7 @@
 ## ⚙️ Dependencies
 
 - feat\(deps\): update stalwartlabs/stalwart \(v0.13.4 → v0.14.0\) [\#20](https://github.com/plopoyop/ansible-role-stalwart/pull/20) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update pre-commit hook ansible/ansible-lint \(v25.9.1 → v25.9.2\) [\#19](https://github.com/plopoyop/ansible-role-stalwart/pull/19) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v43.0.14 → v43.0.16\) [\#18](https://github.com/plopoyop/ansible-role-stalwart/pull/18) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\)!: Update pre-commit hook pre-commit/pre-commit-hooks \(v5.0.0 → v6.0.0\) [\#17](https://github.com/plopoyop/ansible-role-stalwart/pull/17) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update hugo19941994/delete-draft-releases action \(v1.0.1 → v2.0.0\) [\#16](https://github.com/plopoyop/ansible-role-stalwart/pull/16) ([plopoyop](https://github.com/plopoyop))
