@@ -1,0 +1,26 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json",
+    "packages": [
+      "ansible-doctor@8.3.2",
+      "ansible-lint@25.8.2",
+      "git@2.54.0",
+      "glibcLocales@2.40-66",
+      "go-task@3.48.0",
+      "podman@5.8.3",
+      "prek@0.4.10",
+      "python314Packages.ansible@14.1.0",
+      "python314Packages.molecule@26.6.0",
+      "python314Packages.molecule-plugins@25.8.12",
+      "python314Packages.yamllint@1.37.1"
+    ],
+    "shell": {
+      "init_hook": [
+        "echo 'Welcome to devbox!' > /dev/null"
+      ],
+      "scripts": {
+        "test": [
+          "echo \"Error: no test specified\" && exit 1"
+        ]
+      }
+    }
+  }
