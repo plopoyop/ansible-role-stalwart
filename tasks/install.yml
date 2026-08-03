@@ -15,7 +15,19 @@
   loop_control:
     loop_var: "directory_to_create"
 
-- name: "Download Stalwart"
+- name: "Ensure xz is available (Debian)"
+  ansible.builtin.package:
+    name: "xz-utils"
+    state: "present"
+  when: ansible_os_family == "Debian"
+
+- name: "Ensure xz is available (RedHat)"
+  ansible.builtin.package:
+    name: "xz"
+    state: "present"
+  when: ansible_os_family == "RedHat"
+
+- name: "Download Stalwart server"
   ansible.builtin.unarchive:
     src: "{{ stalwart_download_url }}"
     dest: "{{ stalwart_bin_path }}"
@@ -26,7 +38,19 @@
     remote_src: true
   ignore_errors: "{{ ansible_check_mode }}"
   notify: "Restart Stalwart"
-  when: ( not stalwart_exec.stat.exists ) or ( stalwart_current_version != stalwart_version)
+  when: ( not stalwart_exec.stat.exists ) or ( stalwart_current_version != stalwart_version )
+
+- name: "Download Stalwart CLI"
+  ansible.builtin.unarchive:
+    src: "{{ stalwart_cli_download_url }}"
+    dest: "{{ stalwart_bin_path }}"
+    owner: "{{ stalwart_system_user }}"
+    group: "{{ stalwart_system_group }}"
+    mode: "0750"
+    extra_opts: ["--strip-components=1"]
+    remote_src: true
+  ignore_errors: "{{ ansible_check_mode }}"
+  when: ( not stalwart_cli_exec.stat.exists ) or ( stalwart_cli_current_version != stalwart_cli_version )
 
 - name: "Create service file"
   ansible.builtin.template:

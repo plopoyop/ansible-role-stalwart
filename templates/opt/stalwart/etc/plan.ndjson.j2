@@ -1,0 +1,18 @@
+{%- set ops = namespace(list=[]) -%}
+{%- set nls = namespace(value={}) -%}
+{%- for listener in stalwart_server_listeners -%}
+{%-   set binds = listener.bind if (listener.bind is not string) else [listener.bind] -%}
+{%-   set bind_ns = namespace(map={}) -%}
+{%-   for address in binds -%}
+{%-     set bind_ns.map = bind_ns.map | combine({address: true}) -%}
+{%-   endfor -%}
+{%-   set obj = {'name': listener.name, 'protocol': listener.protocol, 'bind': bind_ns.map} | combine(listener.options | default({})) -%}
+{%-   set nls.value = nls.value | combine({listener.name: obj}) -%}
+{%- endfor -%}
+{%- set ops.list = ops.list + [{'@type': 'upsert', 'object': 'NetworkListener', 'matchOn': ['name'], 'value': nls.value}] -%}
+{%- if stalwart_server_hostname | length > 0 -%}
+{%-   set ops.list = ops.list + [{'@type': 'upsert', 'object': 'Domain', 'matchOn': ['name'], 'value': {'domain': {'name': stalwart_default_domain}}}] -%}
+{%-   set ops.list = ops.list + [{'@type': 'update', 'object': 'SystemSettings', 'value': {'defaultHostname': stalwart_server_hostname, 'defaultDomainId': '#domain', 'maxConnections': stalwart_server_max_connections}}] -%}
+{%- endif -%}
+{%- set ops.list = ops.list + stalwart_additional_configs -%}
+{{ ops.list | map('to_json') | join('\n') }}

@@ -20,8 +20,14 @@ stalwart_component: "stalwart" # stalwart-foundationdb
 # @var stalwart_version
 # @var stalwart_version:type: string
 # @var stalwart_version:description: >
-# Stalwart version to install
-stalwart_version: 0.16.1
+# Stalwart server version to install
+stalwart_version: "0.16.1"
+
+# @var stalwart_cli_version
+# @var stalwart_cli_version:type: string
+# @var stalwart_cli_version:description: >
+# Stalwart CLI version to install
+stalwart_cli_version: "1.0.10"
 
 # @var stalwart_service_state
 # @var stalwart_service_state:type: string
@@ -35,52 +41,65 @@ stalwart_service_state: "started"
 # Enable Stalwart service
 stalwart_service_enabled: true
 
-# @var stalwart_server_max_connection
-# @var stalwart_server_max_connection:type: int
-# @var stalwart_server_max_connection:description: >
+# @var stalwart_server_max_connections
+# @var stalwart_server_max_connections:type: int
+# @var stalwart_server_max_connections:description: >
 # Stalwart server max connections
 stalwart_server_max_connections: 8192
 
-# @var stalwart_storage_data
-# @var stalwart_storage_data:type: string
-# @var stalwart_storage_data:description: >
-# Stalwart data storage name
-stalwart_storage_data: "rocksdb"
+# @var stalwart_data_store
+# @var stalwart_data_store:type: dict
+# @var stalwart_data_store:description: >
+# Primary data store definition written to config.json. This is the only
+# setting kept in the on-disk configuration file; every other setting is
+# stored in the database and reconciled through the declarative plan.
+# @var stalwart_data_store:example: >
+# stalwart_data_store:
+#   "@type": "PostgreSql"
+#   host: "db.example.com"
+#   database: "stalwart"
+#   authUsername: "stalwart"
+#   authSecret:
+#     "@type": "Value"
+#     secret: "changeme"
+stalwart_data_store:
+  "@type": "RocksDb"
+  path: "{{ stalwart_data_path }}"
 
-# @var stalwart_storage_fts
-# @var stalwart_storage_fts:type: string
-# @var stalwart_storage_fts:description: >
-# Stalwart full-text store storage name
-stalwart_storage_fts: "rocksdb"
+# @var stalwart_server_hostname
+# @var stalwart_server_hostname:type: string
+# @var stalwart_server_hostname:description: >
+# Default hostname used in SMTP greetings, reports and auto configuration.
+# When set, the role also provisions the matching default domain. Leave
+# undefined to keep the value chosen during the initial bootstrap.
+stalwart_server_hostname: ""
 
-# @var stalwart_storage_blob
-# @var stalwart_storage_blob:type: string
-# @var stalwart_storage_blob:description: >
-# Stalwart blob storage name
-stalwart_storage_blob: "rocksdb"
-
-# @var stalwart_storage_lookup
-# @var stalwart_storage_lookup:type: string
-# @var stalwart_storage_lookup:description: >
-# Stalwart lookup storage name
-stalwart_storage_lookup: "rocksdb"
+# @var stalwart_default_domain
+# @var stalwart_default_domain:type: string
+# @var stalwart_default_domain:description: >
+# Default email domain provisioned and referenced by the system settings.
+# Defaults to the parent domain of 'stalwart_server_hostname'.
+stalwart_default_domain: "{{ stalwart_server_hostname.split('.', 1)[1] if '.' in stalwart_server_hostname else stalwart_server_hostname }}"
 
 # @var stalwart_fallback_admin_login
 # @var stalwart_fallback_admin_login:type: string
 # @var stalwart_fallback_admin_login:description: >
-# Stalwart admin login
+# Recovery administrator login. Used with 'STALWART_RECOVERY_ADMIN' to
+# bootstrap the deployment and to authenticate the declarative plan.
 stalwart_fallback_admin_login: "admin"
 
 # @var stalwart_fallback_admin_password
 # @var stalwart_fallback_admin_password:type: string
 # @var stalwart_fallback_admin_password:description: >
-# Stalwart admin password
+# Recovery administrator password
 stalwart_fallback_admin_password: "changeme!"
 
 # @var stalwart_server_listeners
 # @var stalwart_server_listeners:type: list
 # @var stalwart_server_listeners:description: >
-# Stalwart listeners : all enabled per default, remove unwanted
+# Network listeners to create. Each entry maps to a NetworkListener object:
+# 'bind' accepts a single address or a list, and 'options' carries any extra
+# NetworkListener field (e.g. tlsImplicit, useTls, maxConnections).
 stalwart_server_listeners:
   - name: "smtp"
     bind: "[::]:25"
@@ -92,7 +111,7 @@ stalwart_server_listeners:
     bind: "[::]:465"
     protocol: "smtp"
     options:
-      tls.implicit: true
+      tlsImplicit: true
   - name: "imap"
     bind: "[::]:143"
     protocol: "imap"
@@ -100,7 +119,7 @@ stalwart_server_listeners:
     bind: "[::]:993"
     protocol: "imap"
     options:
-      tls.implicit: true
+      tlsImplicit: true
   - name: "pop3"
     bind: "[::]:110"
     protocol: "pop3"
@@ -108,77 +127,35 @@ stalwart_server_listeners:
     bind: "[::]:995"
     protocol: "pop3"
     options:
-      tls.implicit: true
+      tlsImplicit: true
   - name: "sieve"
     bind: "[::]:4190"
-    protocol: "managesieve"
+    protocol: "manageSieve"
   - name: "https"
     protocol: "http"
     bind: "[::]:443"
     options:
-      tls.implicit: true
+      tlsImplicit: true
   - name: "http"
     protocol: "http"
     bind: "[::]:8080"
 
-# @var stalwart_stores
-# @var stalwart_stores:type: list
-# @var stalwart_stores:description: >
-# Stalwart stores : must contain match to data, fts, blob, lookup stores
-stalwart_stores:
-  - name: "rocksdb"
-    type: "rocksdb"
-    options:
-      path: "{{ stalwart_data_path }}"
-      compression: "lz4"
-      write-buffer-size: 134217728
-      min-blob-size: 16834
-      pool.worker: 10
-
-# @var stalwart_directory_type
-# @var stalwart_directory_type:type: string
-# @var stalwart_directory_type:description: >
-# Stalwart directory type
-stalwart_directory_type: "internal"
-
-# @var stalwart_directory_type
-# @var stalwart_directory_type:type: dict
-# @var stalwart_directory_type:description: >
-# Stalwart directory options
-stalwart_directory_options:
-  store: "rocksdb"
-
-# @var stalwart_tracers
-# @var stalwart_tracers:type: list
-# @var stalwart_tracers:description: >
-# Stalwart tracers
-stalwart_tracers:
-  - type: "stdout"
-    options:
-      level: "info"
-      ansi: false
-      enable: true
-  - type: "log"
-    options:
-      level: "info"
-      path: "{{ stalwart_logs_path }}"
-      prefix: "stalwart.log"
-      rotate: "daily"
-      ansi: false
-      enable: true
-
 # @var stalwart_additional_configs
 # @var stalwart_additional_configs:type: list
 # @var stalwart_additional_configs:description: >
-# Stalwart additional configuration
+# Additional declarative plan operations appended verbatim to the generated
+# plan. Each entry is a full stalwart-cli apply operation.
+# 'stalwart_additionnal_configs' is deprecated but still accepted as an alias.
 # @var stalwart_additional_configs:example: >
 # stalwart_additional_configs:
-#   - name: "directory.imap.pool"
-#     options:
-#       max-connections: 10
-#   - name: "directory.imap.pool.timeout"
-#     options:
-#       create: "30s"
-#       wait: "30s"
-#       recycle: "30s"
+#   - "@type": "update"
+#     object: "Imap"
+#     value:
+#       maxRequestSize: 52428800
+#   - "@type": "upsert"
+#     object: "AllowedIp"
+#     matchOn: ["address"]
+#     value:
+#       allow-1:
+#         address: "10.0.0.0/8"
 stalwart_additional_configs: "{{ stalwart_additionnal_configs | default([]) }}"

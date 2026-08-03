@@ -3,7 +3,8 @@
   hosts: all
   gather_facts: true
   vars:
-    stalwart_server_hostname: "instance.local"
+    stalwart_server_hostname: "mail.example.com"
+    stalwart_default_domain: "example.com"
     stalwart_system_user: "stalwartu"
     stalwart_system_group: "stalwartg"
     stalwart_server_listeners:
@@ -17,35 +18,33 @@
         bind: "[::]:465"
         protocol: "smtp"
         options:
-          tls.implicit: true
+          tlsImplicit: true
       - name: "imaptls"
         bind: "[::]:993"
         protocol: "imap"
         options:
-          tls.implicit: true
+          tlsImplicit: true
       - name: "pop3s"
         bind: "[::]:995"
         protocol: "pop3"
         options:
-          tls.implicit: true
+          tlsImplicit: true
       - name: "https"
         protocol: "http"
         bind: "[::]:443"
         options:
-          tls.implicit: true
+          tlsImplicit: true
       - name: "http"
         protocol: "http"
         bind: "[::]:8080"
 
     stalwart_additional_configs:
-      - name: "directory.imap.pool"
-        options:
-          max-connections: 10
-      - name: "directory.imap.pool.timeout"
-        options:
-          create: "30s"
-          wait: "30s"
-          recycle: "30s"
+      - "@type": "upsert"
+        object: "AllowedIp"
+        matchOn: ["address"]
+        value:
+          allow-1:
+            address: "10.0.0.0/8"
 
   tasks:
     - name: "Import role"
