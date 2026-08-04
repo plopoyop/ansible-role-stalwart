@@ -1,8 +1,8 @@
 # Changelog
 
-## [3.1.0](https://github.com/plopoyop/ansible-role-stalwart/tree/3.1.0) (2026-08-04)
+## [Unreleased](https://github.com/plopoyop/ansible-role-stalwart/tree/HEAD)
 
-[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.3...3.1.0)
+[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.3...HEAD)
 
 ## 🚀 New Features
 
