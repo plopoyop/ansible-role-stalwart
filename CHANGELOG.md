@@ -20,6 +20,7 @@
 - fix\(ci\): update renovatebot/github-action action \(v46.1.13 → v46.1.14\) [\#68](https://github.com/plopoyop/ansible-role-stalwart/pull/68) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.12 → v46.1.13\) [\#67](https://github.com/plopoyop/ansible-role-stalwart/pull/67) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.10 → v46.1.12\) [\#66](https://github.com/plopoyop/ansible-role-stalwart/pull/66) ([plopoyop](https://github.com/plopoyop))
+- feat\(deps\): update stalwartlabs/stalwart \(v0.15.5 → v0.16.1\) [\#65](https://github.com/plopoyop/ansible-role-stalwart/pull/65) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.9 → v46.1.10\) [\#64](https://github.com/plopoyop/ansible-role-stalwart/pull/64) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.8 → v46.1.9\) [\#63](https://github.com/plopoyop/ansible-role-stalwart/pull/63) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update softprops/action-gh-release action \(v2 → v3\) [\#62](https://github.com/plopoyop/ansible-role-stalwart/pull/62) ([plopoyop](https://github.com/plopoyop))
