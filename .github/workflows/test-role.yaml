@@ -10,22 +10,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-24.04
-    strategy:
-      matrix:
-        distro:
-          - debian13
-          - debian12
-          - rockylinux9
-          - rockylinux10
     steps:
-      - uses: actions/checkout@v6
-      - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v17
-        with:
-          name: devenv
-      - name: Install devenv.sh
-        run: nix profile install nixpkgs#devenv
-      - name: Prepare env
-        run: devenv shell task prepare
+      - uses: actions/checkout@v7
+      - name: Install devbox
+        uses: jetify-com/devbox-install-action@v0.15.0
       - name: Run molecule test
-        run: devenv shell task test
+        run: devbox run -- task test
