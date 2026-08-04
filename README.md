@@ -1,30 +1,25 @@
 # plopoyop.stalwart
 
-Install & configure stalwart email server
+Install &amp; configure stalwart email server
 
 ## Table of content
 
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
   - [stalwart_additional_configs](#stalwart_additional_configs)
+  - [stalwart_cli_version](#stalwart_cli_version)
   - [stalwart_component](#stalwart_component)
-  - [stalwart_directory_options](#stalwart_directory_options)
-  - [stalwart_directory_type](#stalwart_directory_type)
+  - [stalwart_data_store](#stalwart_data_store)
+  - [stalwart_default_domain](#stalwart_default_domain)
   - [stalwart_fallback_admin_login](#stalwart_fallback_admin_login)
   - [stalwart_fallback_admin_password](#stalwart_fallback_admin_password)
+  - [stalwart_server_hostname](#stalwart_server_hostname)
   - [stalwart_server_listeners](#stalwart_server_listeners)
-  - [stalwart_server_max_connection](#stalwart_server_max_connection)
   - [stalwart_server_max_connections](#stalwart_server_max_connections)
   - [stalwart_service_enabled](#stalwart_service_enabled)
   - [stalwart_service_state](#stalwart_service_state)
-  - [stalwart_storage_blob](#stalwart_storage_blob)
-  - [stalwart_storage_data](#stalwart_storage_data)
-  - [stalwart_storage_fts](#stalwart_storage_fts)
-  - [stalwart_storage_lookup](#stalwart_storage_lookup)
-  - [stalwart_stores](#stalwart_stores)
   - [stalwart_system_group](#stalwart_system_group)
   - [stalwart_system_user](#stalwart_system_user)
-  - [stalwart_tracers](#stalwart_tracers)
   - [stalwart_version](#stalwart_version)
 - [Dependencies](#dependencies)
 - [License](#license)
@@ -36,42 +31,50 @@ Install & configure stalwart email server
 
 - Minimum Ansible version: `2.1`
 
+
 ## Default Variables
 
 ### stalwart_additional_configs
 
-Stalwart additional configuration
-
-`stalwart_additionnal_configs` is deprecated. The role still accepts it for compatibility,
-but new configurations should use `stalwart_additional_configs`.
-
-**_Type:_** list<br />
+Additional declarative plan operations appended verbatim to the generated
+plan. Each entry is a full stalwart-cli apply operation.
+'stalwart_additionnal_configs' is deprecated but still accepted as an alias.
 
 #### Default value
 
 ```YAML
-stalwart_additional_configs: []
+stalwart_additional_configs: '{{ stalwart_additionnal_configs | default([]) }}'
 ```
 
 #### Example usage
 
 ```YAML
 stalwart_additional_configs:
-  - name: "directory.imap.pool"
-    options:
-      max-connections: 10
-  - name: "directory.imap.pool.timeout"
-    options:
-      create: "30s"
-      wait: "30s"
-      recycle: "30s"
+  - "@type": "update"
+    object: "Imap"
+    value:
+      maxRequestSize: 52428800
+  - "@type": "upsert"
+    object: "AllowedIp"
+    matchOn: ["address"]
+    value:
+      allow-1:
+        address: "10.0.0.0/8"
+```
+
+### stalwart_cli_version
+
+Stalwart CLI version to install
+
+#### Default value
+
+```YAML
+stalwart_cli_version: 1.0.10
 ```
 
 ### stalwart_component
 
 Stalwart component to install : stalwart / stalwart-foundationdb
-
-**_Type:_** string<br />
 
 #### Default value
 
@@ -79,32 +82,49 @@ Stalwart component to install : stalwart / stalwart-foundationdb
 stalwart_component: stalwart
 ```
 
-### stalwart_directory_options
+### stalwart_data_store
+
+Primary data store definition written to config.json. This is the only
+setting kept in the on-disk configuration file; every other setting is
+stored in the database and reconciled through the declarative plan.
 
 #### Default value
 
 ```YAML
-stalwart_directory_options:
-  store: rocksdb
+stalwart_data_store:
+  '@type': RocksDb
+  path: '{{ stalwart_data_path }}'
 ```
 
-### stalwart_directory_type
+#### Example usage
 
-Stalwart directory options
+```YAML
+stalwart_data_store:
+  "@type": "PostgreSql"
+  host: "db.example.com"
+  database: "stalwart"
+  authUsername: "stalwart"
+  authSecret:
+    "@type": "Value"
+    secret: "changeme"
+```
 
-**_Type:_** dict<br />
+### stalwart_default_domain
+
+Default email domain provisioned and referenced by the system settings.
+Defaults to the parent domain of 'stalwart_server_hostname'.
 
 #### Default value
 
 ```YAML
-stalwart_directory_type: internal
+stalwart_default_domain: "{{ stalwart_server_hostname.split('.', 1)[1] if '.' in stalwart_server_hostname
+  else stalwart_server_hostname }}"
 ```
 
 ### stalwart_fallback_admin_login
 
-Stalwart admin login
-
-**_Type:_** string<br />
+Recovery administrator login. Used with 'STALWART_RECOVERY_ADMIN' to
+bootstrap the deployment and to authenticate the declarative plan.
 
 #### Default value
 
@@ -114,9 +134,7 @@ stalwart_fallback_admin_login: admin
 
 ### stalwart_fallback_admin_password
 
-Stalwart admin password
-
-**_Type:_** string<br />
+Recovery administrator password
 
 #### Default value
 
@@ -124,11 +142,23 @@ Stalwart admin password
 stalwart_fallback_admin_password: changeme!
 ```
 
+### stalwart_server_hostname
+
+Default hostname used in SMTP greetings, reports and auto configuration.
+When set, the role also provisions the matching default domain. Leave
+undefined to keep the value chosen during the initial bootstrap.
+
+#### Default value
+
+```YAML
+stalwart_server_hostname: ''
+```
+
 ### stalwart_server_listeners
 
-Stalwart listeners : all enabled per default, remove unwanted
-
-**_Type:_** list<br />
+Network listeners to create. Each entry maps to a NetworkListener object:
+'bind' accepts a single address or a list, and 'options' carries any extra
+NetworkListener field (e.g. tlsImplicit, useTls, maxConnections).
 
 #### Default value
 
@@ -144,7 +174,7 @@ stalwart_server_listeners:
     bind: '[::]:465'
     protocol: smtp
     options:
-      tls.implicit: true
+      tlsImplicit: true
   - name: imap
     bind: '[::]:143'
     protocol: imap
@@ -152,7 +182,7 @@ stalwart_server_listeners:
     bind: '[::]:993'
     protocol: imap
     options:
-      tls.implicit: true
+      tlsImplicit: true
   - name: pop3
     bind: '[::]:110'
     protocol: pop3
@@ -160,27 +190,23 @@ stalwart_server_listeners:
     bind: '[::]:995'
     protocol: pop3
     options:
-      tls.implicit: true
+      tlsImplicit: true
   - name: sieve
     bind: '[::]:4190'
-    protocol: managesieve
+    protocol: manageSieve
   - name: https
     protocol: http
     bind: '[::]:443'
     options:
-      tls.implicit: true
+      tlsImplicit: true
   - name: http
     protocol: http
     bind: '[::]:8080'
 ```
 
-### stalwart_server_max_connection
+### stalwart_server_max_connections
 
 Stalwart server max connections
-
-**_Type:_** int<br />
-
-### stalwart_server_max_connections
 
 #### Default value
 
@@ -192,8 +218,6 @@ stalwart_server_max_connections: 8192
 
 Enable Stalwart service
 
-**_Type:_** boolean<br />
-
 #### Default value
 
 ```YAML
@@ -204,87 +228,15 @@ stalwart_service_enabled: true
 
 Stalwart service desired state
 
-**_Type:_** string<br />
-
 #### Default value
 
 ```YAML
 stalwart_service_state: started
 ```
 
-### stalwart_storage_blob
-
-Stalwart blob storage name
-
-**_Type:_** string<br />
-
-#### Default value
-
-```YAML
-stalwart_storage_blob: rocksdb
-```
-
-### stalwart_storage_data
-
-Stalwart data storage name
-
-**_Type:_** string<br />
-
-#### Default value
-
-```YAML
-stalwart_storage_data: rocksdb
-```
-
-### stalwart_storage_fts
-
-Stalwart full-text store storage name
-
-**_Type:_** string<br />
-
-#### Default value
-
-```YAML
-stalwart_storage_fts: rocksdb
-```
-
-### stalwart_storage_lookup
-
-Stalwart lookup storage name
-
-**_Type:_** string<br />
-
-#### Default value
-
-```YAML
-stalwart_storage_lookup: rocksdb
-```
-
-### stalwart_stores
-
-Stalwart stores : must contain match to data, fts, blob, lookup stores
-
-**_Type:_** list<br />
-
-#### Default value
-
-```YAML
-stalwart_stores:
-  - name: rocksdb
-    type: rocksdb
-    options:
-      path: '{{ stalwart_data_path }}'
-      compression: lz4
-      write-buffer-size: 134217728
-      min-blob-size: 16834
-      pool.worker: 10
-```
-
 ### stalwart_system_group
 
 System group name to create
-
-**_Type:_** string<br />
 
 #### Default value
 
@@ -296,50 +248,23 @@ stalwart_system_group: stalwart
 
 System user name to create
 
-**_Type:_** string<br />
-
 #### Default value
 
 ```YAML
 stalwart_system_user: stalwart
 ```
 
-### stalwart_tracers
-
-Stalwart tracers
-
-**_Type:_** list<br />
-
-#### Default value
-
-```YAML
-stalwart_tracers:
-  - type: stdout
-    options:
-      level: info
-      ansi: false
-      enable: true
-  - type: log
-    options:
-      level: info
-      path: '{{ stalwart_logs_path }}'
-      prefix: stalwart.log
-      rotate: daily
-      ansi: false
-      enable: true
-```
-
 ### stalwart_version
 
-Stalwart version to install
-
-**_Type:_** string<br />
+Stalwart server version to install
 
 #### Default value
 
 ```YAML
-stalwart_version: 0.15.5
+stalwart_version: 0.16.1
 ```
+
+
 
 ## Dependencies
 

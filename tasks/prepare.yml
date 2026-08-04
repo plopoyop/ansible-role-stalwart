@@ -13,47 +13,40 @@
     shell: "/usr/sbin/nologin"
     system: true
 
-- name: "Check if already installed"
+- name: "Check if server is already installed"
   ansible.builtin.stat:
     path: "{{ stalwart_executable_path }}"
-  register: stalwart_exec
+  register: "stalwart_exec"
 
-- name: "Get version if stalwart is installed"
+- name: "Get server version if stalwart is installed"
   when: stalwart_exec.stat.exists
   block:
-    - name: "Get version"
+    - name: "Get server version"
       ansible.builtin.command: "{{ stalwart_executable_path }} -V"
       failed_when: false
       changed_when: false
       check_mode: false
-      register: stalwart_output
+      register: "stalwart_output"
 
-    - name: "Set current installed version"
+    - name: "Set current installed server version"
       ansible.builtin.set_fact:
         stalwart_current_version: "{{ stalwart_output.stdout_lines[0] }}"
 
-- name: "Check if initialization has been made"
+- name: "Check if CLI is already installed"
   ansible.builtin.stat:
-    path: "{{ stalwart_config_file_path }}"
-  register: stalwart_config_file_st
+    path: "{{ stalwart_cli_executable_path }}"
+  register: "stalwart_cli_exec"
 
-- name: "Handle admin password when setup has been made"
-  when: stalwart_config_file_st.stat.exists
+- name: "Get CLI version if stalwart-cli is installed"
+  when: stalwart_cli_exec.stat.exists
   block:
-    - name: "Get config file content"
-      ansible.builtin.slurp:
-        src: "{{ stalwart_config_file_path }}"
-      register: config_file_content
+    - name: "Get CLI version"
+      ansible.builtin.command: "{{ stalwart_cli_executable_path }} --version"
+      failed_when: false
+      changed_when: false
+      check_mode: false
+      register: "stalwart_cli_output"
 
-    - name: "Get existing password hash"
+    - name: "Set current installed CLI version"
       ansible.builtin.set_fact:
-        hash_stored: "{{ config_file_content['content'] | b64decode | regex_search('(\\n|^)(secret|authentication\\.fallback-admin\\.secret) = \"(.*)\"\n', '\\3') }}"
-
-    - name: "Get existing salt"
-      ansible.builtin.set_fact:
-        stalwart_fallback_admin_password_salt: "{{ (hash_stored[0] | split('$'))[2] }}"
-
-- name: "Create salt if does not exists"
-  ansible.builtin.set_fact:
-    stalwart_fallback_admin_password_salt: "{{ lookup('password', '/dev/null length=16 chars=ascii_letters,digits') }}"
-  when: stalwart_fallback_admin_password_salt is undefined
+        stalwart_cli_current_version: "{{ stalwart_cli_output.stdout_lines[0] | regex_search('([0-9]+\\.[0-9]+\\.[0-9]+)') }}"

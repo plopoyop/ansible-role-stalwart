@@ -1,11 +1,4 @@
 ---
-- name: "Init app"
-  ansible.builtin.command:
-    cmd: "{{ stalwart_executable_path }} --init {{ stalwart_install_path }}"
-    creates: "{{ stalwart_config_file_path }}"
-  become: true
-  become_user: "{{ stalwart_system_user }}"
-
 - name: "Warn about deprecated additional config variable"
   ansible.builtin.debug:
     msg: >-
@@ -13,14 +6,106 @@
       Use 'stalwart_additional_configs' instead.
   when: stalwart_additionnal_configs is defined
 
-- name: "Setup configuration"
+- name: "Deploy data store configuration"
   ansible.builtin.template:
-    src: "opt/stalwart/etc/config.toml.j2"
+    src: "opt/stalwart/etc/config.json.j2"
     dest: "{{ stalwart_config_file_path }}"
     owner: "{{ stalwart_system_user }}"
     group: "{{ stalwart_system_group }}"
     mode: "0640"
   notify: "Restart Stalwart"
+
+- name: "Deploy recovery administrator credentials"
+  ansible.builtin.template:
+    src: "opt/stalwart/etc/stalwart.env.j2"
+    dest: "{{ stalwart_env_file_path }}"
+    owner: "{{ stalwart_system_user }}"
+    group: "{{ stalwart_system_group }}"
+    mode: "0640"
+  notify: "Restart Stalwart"
+
+- name: "Render declarative configuration plan"
+  ansible.builtin.template:
+    src: "opt/stalwart/etc/plan.ndjson.j2"
+    dest: "{{ stalwart_plan_file_path }}"
+    owner: "{{ stalwart_system_user }}"
+    group: "{{ stalwart_system_group }}"
+    mode: "0640"
+  register: "stalwart_plan"
+
+- name: "Check if the deployment has been bootstrapped"
+  ansible.builtin.stat:
+    path: "{{ stalwart_bootstrap_sentinel_path }}"
+  register: "stalwart_bootstrap_state"
+
+- name: "Apply declarative configuration"
+  when:
+    - not ansible_check_mode
+    - ( not stalwart_bootstrap_state.stat.exists ) or stalwart_plan.changed
+  block:
+    - name: "Stop Stalwart service before reconfiguration"
+      ansible.builtin.service:
+        name: "{{ stalwart_service_name }}"
+        state: "stopped"
+      failed_when: false
+
+    - name: "Start Stalwart in recovery mode"
+      ansible.builtin.command:
+        argv:
+          - "systemd-run"
+          - "--unit={{ stalwart_recovery_unit }}"
+          - "--collect"
+          - "--uid={{ stalwart_system_user }}"
+          - "--gid={{ stalwart_system_group }}"
+          - "--setenv=STALWART_RECOVERY_MODE=1"
+          - "--setenv=STALWART_RECOVERY_ADMIN={{ stalwart_fallback_admin_login }}:{{ stalwart_fallback_admin_password }}"
+          - "{{ stalwart_executable_path }}"
+          - "--config"
+          - "{{ stalwart_config_file_path }}"
+      changed_when: true
+
+    - name: "Wait for the recovery listener"
+      ansible.builtin.wait_for:
+        host: "127.0.0.1"
+        port: 8080
+        timeout: 60
+
+    - name: "Apply the configuration plan"
+      ansible.builtin.command:
+        cmd: "{{ stalwart_cli_executable_path }} apply --file {{ stalwart_plan_file_path }} --json"
+      environment:
+        STALWART_URL: "{{ stalwart_recovery_url }}"
+        STALWART_USER: "{{ stalwart_fallback_admin_login }}"
+        STALWART_PASSWORD: "{{ stalwart_fallback_admin_password }}"
+      changed_when: true
+      register: "stalwart_apply"
+
+    - name: "Stop the recovery instance"
+      ansible.builtin.systemd_service:
+        name: "{{ stalwart_recovery_unit }}"
+        state: "stopped"
+      failed_when: false
+
+    - name: "Wait for the recovery listener to be released"
+      ansible.builtin.wait_for:
+        host: "127.0.0.1"
+        port: 8080
+        state: "stopped"
+        timeout: 30
+
+    - name: "Mark the deployment as bootstrapped"
+      ansible.builtin.file:
+        path: "{{ stalwart_bootstrap_sentinel_path }}"
+        state: "touch"
+        owner: "{{ stalwart_system_user }}"
+        group: "{{ stalwart_system_group }}"
+        mode: "0640"
+  always:
+    - name: "Ensure the recovery instance is not left running"
+      ansible.builtin.systemd_service:
+        name: "{{ stalwart_recovery_unit }}"
+        state: "stopped"
+      failed_when: false
 
 - name: "Ensure service is in correct state"
   ansible.builtin.service:

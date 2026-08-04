@@ -1,7 +1,7 @@
 [Unit]
 Description=Stalwart
 Conflicts=postfix.service sendmail.service exim4.service
-ConditionPathExists={{ stalwart_config_path }}/config.toml
+ConditionPathExists={{ stalwart_config_file_path }}
 After=network-online.target
 
 [Service]
@@ -11,7 +11,8 @@ KillMode=process
 KillSignal=SIGINT
 Restart=on-failure
 RestartSec=5
-ExecStart={{ stalwart_executable_path }} --config={{ stalwart_config_path }}/config.toml
+EnvironmentFile=-{{ stalwart_env_file_path }}
+ExecStart={{ stalwart_executable_path }} --config={{ stalwart_config_file_path }}
 SyslogIdentifier=stalwart
 User={{ stalwart_system_user }}
 Group={{ stalwart_system_group }}
