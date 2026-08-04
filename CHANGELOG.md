@@ -30,6 +30,8 @@
 
 **Merged pull requests:**
 
+- feat\(deps\): update git \(2.54.0 → 2.55.0\) [\#81](https://github.com/plopoyop/ansible-role-stalwart/pull/81) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update podman \(5.8.3 → 5.8.4\) [\#80](https://github.com/plopoyop/ansible-role-stalwart/pull/80) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update ansible-doctor \(8.3.2 → 8.3.3\) [\#79](https://github.com/plopoyop/ansible-role-stalwart/pull/79) ([plopoyop](https://github.com/plopoyop))
 
 ## [3.0.3](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.3) (2026-04-05)
