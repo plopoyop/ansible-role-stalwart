@@ -1,8 +1,12 @@
 # Changelog
 
-## [3.0.4](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.4) (2026-08-02)
+## [3.1.0](https://github.com/plopoyop/ansible-role-stalwart/tree/3.1.0) (2026-08-04)
 
-[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.3...3.0.4)
+[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.3...3.1.0)
+
+## 🚀 New Features
+
+- Migrate to devbox [\#78](https://github.com/plopoyop/ansible-role-stalwart/pull/78) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
