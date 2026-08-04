@@ -28,6 +28,10 @@
 - feat\(ci\)!: Update softprops/action-gh-release action \(v2 → v3\) [\#62](https://github.com/plopoyop/ansible-role-stalwart/pull/62) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.7 → v46.1.8\) [\#61](https://github.com/plopoyop/ansible-role-stalwart/pull/61) ([plopoyop](https://github.com/plopoyop))
 
+**Merged pull requests:**
+
+- fix\(deps\): update ansible-doctor \(8.3.2 → 8.3.3\) [\#79](https://github.com/plopoyop/ansible-role-stalwart/pull/79) ([plopoyop](https://github.com/plopoyop))
+
 ## [3.0.3](https://github.com/plopoyop/ansible-role-stalwart/tree/3.0.3) (2026-04-05)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/3.0.2...3.0.3)
