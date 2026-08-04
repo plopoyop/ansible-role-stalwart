@@ -14,6 +14,7 @@
 - fix\(ci\): update renovatebot/github-action action \(v46.1.19 → v46.1.20\) [\#76](https://github.com/plopoyop/ansible-role-stalwart/pull/76) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.18 → v46.1.19\) [\#75](https://github.com/plopoyop/ansible-role-stalwart/pull/75) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.17 → v46.1.18\) [\#74](https://github.com/plopoyop/ansible-role-stalwart/pull/74) ([plopoyop](https://github.com/plopoyop))
+- feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.4.0 → v26.6.0\) [\#73](https://github.com/plopoyop/ansible-role-stalwart/pull/73) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.16 → v46.1.17\) [\#72](https://github.com/plopoyop/ansible-role-stalwart/pull/72) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.15 → v46.1.16\) [\#71](https://github.com/plopoyop/ansible-role-stalwart/pull/71) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update actions/checkout action \(v6.0.3 → v7.0.0\) [\#70](https://github.com/plopoyop/ansible-role-stalwart/pull/70) ([plopoyop](https://github.com/plopoyop))
