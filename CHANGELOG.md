@@ -10,6 +10,7 @@
 
 ## ⚙️ Dependencies
 
+- fix\(deps\): update stalwartlabs/stalwart \(v0.16.1 → v0.16.16\) [\#83](https://github.com/plopoyop/ansible-role-stalwart/pull/83) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.2.0 → v46.2.1\) [\#82](https://github.com/plopoyop/ansible-role-stalwart/pull/82) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\): update renovatebot/github-action action \(v46.1.20 → v46.2.0\) [\#77](https://github.com/plopoyop/ansible-role-stalwart/pull/77) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.19 → v46.1.20\) [\#76](https://github.com/plopoyop/ansible-role-stalwart/pull/76) ([plopoyop](https://github.com/plopoyop))
