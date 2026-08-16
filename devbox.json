@@ -7,7 +7,7 @@
       "glibcLocales@2.40-66",
       "go-task@3.48.0",
       "podman@5.8.4",
-      "prek@0.4.10",
+      "prek@0.4.12",
       "python314Packages.ansible@14.2.0",
       "python314Packages.molecule@26.6.0",
       "python314Packages.molecule-plugins@25.8.12",
