@@ -10,6 +10,8 @@
 
 **Merged pull requests:**
 
+- feat\(deps\): update go-task \(3.48.0 → 3.52.0\) [\#90](https://github.com/plopoyop/ansible-role-stalwart/pull/90) ([plopoyop](https://github.com/plopoyop))
+- feat\(deps\): update ansible-doctor \(8.3.3 → 8.4.0\) [\#89](https://github.com/plopoyop/ansible-role-stalwart/pull/89) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.4.10 → 0.4.12\) [\#86](https://github.com/plopoyop/ansible-role-stalwart/pull/86) ([plopoyop](https://github.com/plopoyop))
 
 ## [4.0.0](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.0) (2026-08-09)
