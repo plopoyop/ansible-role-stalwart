@@ -1,12 +1,16 @@
 # Changelog
 
-## [4.0.1](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.1) (2026-08-16)
+## [4.0.1](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.1) (2026-08-25)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/4.0.0...4.0.1)
 
 ## ⚙️ Dependencies
 
 - fix\(ci\): update renovatebot/github-action action \(v46.2.1 → v46.2.2\) [\#85](https://github.com/plopoyop/ansible-role-stalwart/pull/85) ([plopoyop](https://github.com/plopoyop))
+
+**Merged pull requests:**
+
+- fix\(deps\): update prek \(0.4.10 → 0.4.12\) [\#86](https://github.com/plopoyop/ansible-role-stalwart/pull/86) ([plopoyop](https://github.com/plopoyop))
 
 ## [4.0.0](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.0) (2026-08-09)
 
