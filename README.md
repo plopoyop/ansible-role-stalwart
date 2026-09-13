@@ -261,7 +261,7 @@ Stalwart server version to install
 #### Default value
 
 ```YAML
-stalwart_version: 0.16.19
+stalwart_version: 0.16.21
 ```
 
 
