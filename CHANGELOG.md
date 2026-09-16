@@ -1,6 +1,6 @@
 # Changelog
 
-## [4.0.2](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.2) (2026-09-14)
+## [4.0.2](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.2) (2026-09-16)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/4.0.1...4.0.2)
 
@@ -13,6 +13,7 @@
 **Merged pull requests:**
 
 - feat\(deps\): update python314packages.ansible \(14.2.0 → 14.3.1\) [\#96](https://github.com/plopoyop/ansible-role-stalwart/pull/96) ([plopoyop](https://github.com/plopoyop))
+- feat\(deps\): update go-task \(3.52.0 → 3.53.1\) [\#95](https://github.com/plopoyop/ansible-role-stalwart/pull/95) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update podman \(5.8.4 → 5.8.6\) [\#92](https://github.com/plopoyop/ansible-role-stalwart/pull/92) ([plopoyop](https://github.com/plopoyop))
 
 ## [4.0.1](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.1) (2026-08-30)
