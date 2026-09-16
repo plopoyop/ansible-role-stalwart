@@ -14,6 +14,7 @@
 
 - feat\(deps\): update python314packages.ansible \(14.2.0 → 14.3.1\) [\#96](https://github.com/plopoyop/ansible-role-stalwart/pull/96) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update go-task \(3.52.0 → 3.53.1\) [\#95](https://github.com/plopoyop/ansible-role-stalwart/pull/95) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update prek \(0.4.12 → 0.4.14\) [\#93](https://github.com/plopoyop/ansible-role-stalwart/pull/93) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update podman \(5.8.4 → 5.8.6\) [\#92](https://github.com/plopoyop/ansible-role-stalwart/pull/92) ([plopoyop](https://github.com/plopoyop))
 
 ## [4.0.1](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.1) (2026-08-30)
