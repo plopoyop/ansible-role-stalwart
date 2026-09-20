@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.3](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.3) (2026-09-20)
+
+[Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/4.0.2...4.0.3)
+
+## ⚙️ Dependencies
+
+- feat\(ci\)!: Update ubuntu \(24.04 → 26.04\) [\#98](https://github.com/plopoyop/ansible-role-stalwart/pull/98) ([plopoyop](https://github.com/plopoyop))
+
 ## [4.0.2](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.2) (2026-09-16)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/4.0.1...4.0.2)
