@@ -11,6 +11,10 @@
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.8.0 → v26.9.0\) [\#99](https://github.com/plopoyop/ansible-role-stalwart/pull/99) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update ubuntu \(24.04 → 26.04\) [\#98](https://github.com/plopoyop/ansible-role-stalwart/pull/98) ([plopoyop](https://github.com/plopoyop))
 
+**Merged pull requests:**
+
+- fix\(deps\): update ansible-doctor \(8.4.0 → 8.4.3\) [\#100](https://github.com/plopoyop/ansible-role-stalwart/pull/100) ([plopoyop](https://github.com/plopoyop))
+
 ## [4.0.2](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.2) (2026-09-16)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/4.0.1...4.0.2)
