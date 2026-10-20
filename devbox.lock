@@ -243,56 +243,56 @@
         }
       }
     },
-    "podman@5.8.6": {
-      "last_modified": "2026-08-27T07:16:00Z",
-      "resolved": "github:NixOS/nixpkgs/c27cdad491a991b11ed731760aa2ef8db0cb0410#podman",
+    "podman@5.8.9": {
+      "last_modified": "2026-10-16T02:15:57Z",
+      "resolved": "github:NixOS/nixpkgs/f20cd90e28fe0403873f473b29e42662cd86e8c4#podman",
       "source": "devbox-search",
-      "version": "5.8.6",
+      "version": "5.8.9",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/dfjrma8ac48j796cn8ca81mv9qsakb4i-podman-5.8.6",
+              "path": "/nix/store/zp6g371nl7k2qz32s6mihphajsla5vd5-podman-5.8.9",
               "default": true
             },
             {
               "name": "man",
-              "path": "/nix/store/57wkp8wac85s4gdl1p0ni714ccx00xx1-podman-5.8.6-man",
+              "path": "/nix/store/c7flxfrqwif402xmjhlj0r8lvvvd3g97-podman-5.8.9-man",
               "default": true
             }
           ],
-          "store_path": "/nix/store/dfjrma8ac48j796cn8ca81mv9qsakb4i-podman-5.8.6"
+          "store_path": "/nix/store/zp6g371nl7k2qz32s6mihphajsla5vd5-podman-5.8.9"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/aqgswxmx338gd7d714a8gdhv9v43ip5i-podman-5.8.6",
+              "path": "/nix/store/9marp3fi8q5wnp0ynj4j8f5wk23yvmra-podman-5.8.9",
               "default": true
             },
             {
               "name": "man",
-              "path": "/nix/store/jfmzgjhjpiy7djf2fldl9wwy5mby1p56-podman-5.8.6-man",
+              "path": "/nix/store/qkscnxnhjp1qrrgnjkaz1i1zh2xc3s0b-podman-5.8.9-man",
               "default": true
             }
           ],
-          "store_path": "/nix/store/aqgswxmx338gd7d714a8gdhv9v43ip5i-podman-5.8.6"
+          "store_path": "/nix/store/9marp3fi8q5wnp0ynj4j8f5wk23yvmra-podman-5.8.9"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/kxij42i82abmk9knpc16bns88m58g2np-podman-5.8.6",
+              "path": "/nix/store/4mva69zvgs5qykmqh0vkyf9lzwp16vpw-podman-5.8.9",
               "default": true
             },
             {
               "name": "man",
-              "path": "/nix/store/37z53qxfrvyr76z3nxnxqwgsbz2mi9an-podman-5.8.6-man",
+              "path": "/nix/store/rialaiicpjjbl7wvf2v466vq2kv1m974-podman-5.8.9-man",
               "default": true
             }
           ],
-          "store_path": "/nix/store/kxij42i82abmk9knpc16bns88m58g2np-podman-5.8.6"
+          "store_path": "/nix/store/4mva69zvgs5qykmqh0vkyf9lzwp16vpw-podman-5.8.9"
         }
       }
     },
