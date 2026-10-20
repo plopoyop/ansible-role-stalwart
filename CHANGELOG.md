@@ -1,12 +1,13 @@
 # Changelog
 
-## [4.0.3](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.3) (2026-10-19)
+## [4.0.3](https://github.com/plopoyop/ansible-role-stalwart/tree/4.0.3) (2026-10-20)
 
 [Full Changelog](https://github.com/plopoyop/ansible-role-stalwart/compare/4.0.2...4.0.3)
 
 ## ⚙️ Dependencies
 
 - feat\(ci\): update renovatebot/github-action action \(v46.2.5 → v46.3.8\) [\#106](https://github.com/plopoyop/ansible-role-stalwart/pull/106) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update stalwartlabs/stalwart \(v0.16.19 → v0.16.27\) [\#105](https://github.com/plopoyop/ansible-role-stalwart/pull/105) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.8.0 → v26.9.0\) [\#99](https://github.com/plopoyop/ansible-role-stalwart/pull/99) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update ubuntu \(24.04 → 26.04\) [\#98](https://github.com/plopoyop/ansible-role-stalwart/pull/98) ([plopoyop](https://github.com/plopoyop))
 
