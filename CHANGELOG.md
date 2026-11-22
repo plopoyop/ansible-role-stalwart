@@ -20,6 +20,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\): update python314packages.yamllint \(1.37.1 → 1.38.0\) [\#119](https://github.com/plopoyop/ansible-role-stalwart/pull/119) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update podman \(5.8.6 → 5.8.9\) [\#101](https://github.com/plopoyop/ansible-role-stalwart/pull/101) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update ansible-doctor \(8.4.0 → 8.4.3\) [\#100](https://github.com/plopoyop/ansible-role-stalwart/pull/100) ([plopoyop](https://github.com/plopoyop))
 
