@@ -512,67 +512,53 @@
         }
       }
     },
-    "python314Packages.yamllint@1.37.1": {
-      "last_modified": "2026-08-01T16:34:20Z",
-      "resolved": "github:NixOS/nixpkgs/a5cbcfe954791221bfffe2307f7d1a1bf61a871e#python314Packages.yamllint",
+    "python314Packages.yamllint@1.38.0": {
+      "last_modified": "2026-11-20T15:12:34Z",
+      "resolved": "github:NixOS/nixpkgs/9996594bd38077de6a018ec17453ba3d99182787#python314Packages.yamllint",
       "source": "devbox-search",
-      "version": "1.37.1",
+      "version": "1.38.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/gmrlavw9hxaj8vkfmc4fb99jbkk5rv1v-python3.14-yamllint-1.37.1",
+              "path": "/nix/store/aqqp3s2sjfr4n7d6d5ar5d4drrpnbm0a-python3.14-yamllint-1.38.0",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/vx2gbhfdbc45ckj00d8a56v7q070syl6-python3.14-yamllint-1.37.1-dist"
+              "path": "/nix/store/dzmk4ns763y96zy9lyal4plw2xzjhl43-python3.14-yamllint-1.38.0-dist"
             }
           ],
-          "store_path": "/nix/store/gmrlavw9hxaj8vkfmc4fb99jbkk5rv1v-python3.14-yamllint-1.37.1"
+          "store_path": "/nix/store/aqqp3s2sjfr4n7d6d5ar5d4drrpnbm0a-python3.14-yamllint-1.38.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/qwzwn9invqa2cds0wzh17aim8zqxfzrq-python3.14-yamllint-1.37.1",
+              "path": "/nix/store/00c8j1v7vxgvgqq116gbfmzagzj5py2x-python3.14-yamllint-1.38.0",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/xy5brpcxnzrff06x2i0rrq1plvw3gpm0-python3.14-yamllint-1.37.1-dist"
+              "path": "/nix/store/9sdi5gix7qicwq066n0lrjnmw25v5rnj-python3.14-yamllint-1.38.0-dist"
             }
           ],
-          "store_path": "/nix/store/qwzwn9invqa2cds0wzh17aim8zqxfzrq-python3.14-yamllint-1.37.1"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/kah2iahcmpqpdz5hv7ag71i7yb76lpqj-python3.14-yamllint-1.37.1",
-              "default": true
-            },
-            {
-              "name": "dist",
-              "path": "/nix/store/mpdjpzrz68x89dbya7j83wkdpgjfcrc1-python3.14-yamllint-1.37.1-dist"
-            }
-          ],
-          "store_path": "/nix/store/kah2iahcmpqpdz5hv7ag71i7yb76lpqj-python3.14-yamllint-1.37.1"
+          "store_path": "/nix/store/00c8j1v7vxgvgqq116gbfmzagzj5py2x-python3.14-yamllint-1.38.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/fvkapyfmww3x0fa2dci5d1vhbqb0m6pd-python3.14-yamllint-1.37.1",
+              "path": "/nix/store/126yp0ps463blq40shrgxkwn412rqylj-python3.14-yamllint-1.38.0",
               "default": true
             },
             {
               "name": "dist",
-              "path": "/nix/store/4ck605l9rk3zp7n9ywdl4dfgijnsfg7m-python3.14-yamllint-1.37.1-dist"
+              "path": "/nix/store/k7wy438h6pglicv1cm8svgw42fi7h7s4-python3.14-yamllint-1.38.0-dist"
             }
           ],
-          "store_path": "/nix/store/fvkapyfmww3x0fa2dci5d1vhbqb0m6pd-python3.14-yamllint-1.37.1"
+          "store_path": "/nix/store/126yp0ps463blq40shrgxkwn412rqylj-python3.14-yamllint-1.38.0"
         }
       }
     }
